@@ -92,6 +92,227 @@
         .animation-delay-4000 {
             animation-delay: 4s;
         }
+
+        /* Consultation Booking Widget */
+        .cal-day {
+            aspect-ratio: 1;
+            border-radius: 0.6rem;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .cal-day:hover:not(.cal-disabled):not(.cal-selected) {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .cal-day.cal-disabled {
+            color: rgba(255, 255, 255, 0.18);
+            cursor: not-allowed;
+        }
+
+        .cal-day.cal-selected {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.35);
+        }
+
+        .cal-day.cal-today {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+        }
+
+        .slot-btn {
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.9rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .slot-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(20, 184, 166, 0.5);
+        }
+
+        .slot-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .slot-btn.slot-selected {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        /* Booking Admin Panel */
+        .admin-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .admin-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .admin-modal {
+            width: 100%;
+            max-width: 56rem;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(12px);
+            transition: transform 0.3s ease;
+        }
+
+        .admin-overlay.open .admin-modal {
+            transform: translateY(0);
+        }
+
+        .admin-table-wrap {
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+        }
+
+        .admin-table-wrap::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .admin-table-wrap::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 999px;
+        }
+
+        .holiday-date-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.75rem;
+            color: #fff;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            color-scheme: dark;
+        }
+
+        .holiday-date-input:focus {
+            outline: none;
+            border-color: rgba(20, 184, 166, 0.5);
+        }
+
+        .admin-table th {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1;
+        }
+
+        .admin-row-cancel {
+            color: rgba(239, 68, 68, 0.8);
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .admin-row-cancel:hover {
+            color: #ef4444;
+        }
+
+        /* Booking step indicator */
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        .step-dot.done {
+            background: #14b8a6;
+        }
+
+        .step-line {
+            width: 32px;
+            height: 2px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: background 0.3s ease;
+        }
+
+        .step-line.done {
+            background: #14b8a6;
+        }
+
+        /* Program selection buttons */
+        .prog-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1rem;
+            border-radius: 1.1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .prog-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(20, 184, 166, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .prog-btn.selected {
+            background: rgba(20, 184, 166, 0.15);
+            border-color: #14b8a6;
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.25);
+        }
+
+        .prog-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: 0.85rem;
+            background: rgba(20, 184, 166, 0.15);
+            color: #2dd4bf;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+
+        .prog-btn.selected .prog-icon {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -642,38 +863,163 @@
                     </div>
                 </div>
                 <div
-                    class="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/10 text-white">
-                    <h3 class="text-2xl font-bold mb-6 text-center text-white">Klaim Sesi Gratis Anda</h3>
-                    <form
-                        onsubmit="event.preventDefault(); alert('Terima kasih telah bergabung! Kami akan segera menghubungi Anda.');">
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-1">Nama Lengkap</label>
-                                <input type="text" required
-                                    class="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 focus:ring-2 focus:ring-aqua-500 focus:border-aqua-500 outline-none transition-all text-white placeholder-gray-500">
+                    class="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/10 text-white relative overflow-hidden">
+                    <!-- Booking Widget -->
+                    <div id="booking-widget">
+                        <h3 class="text-2xl font-bold mb-1 text-center text-white">Booking Sesi Gratis Anda</h3>
+                        <p class="text-sm text-gray-400 text-center mb-6">Pilih program dan jadwal yang paling cocok untuk
+                            Anda</p>
+
+                        <!-- Step indicator -->
+                        <div class="flex items-center justify-center gap-2 mb-6">
+                            <span class="step-dot" id="step-dot-1"></span>
+                            <span class="step-line" id="step-line-1"></span>
+                            <span class="step-dot" id="step-dot-2"></span>
+                            <span class="step-line" id="step-line-2"></span>
+                            <span class="step-dot" id="step-dot-3"></span>
+                        </div>
+
+                        <!-- Step 1: Program -->
+                        <div id="step-program">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <button type="button" class="prog-btn" data-program="Aqua-Power HIIT">
+                                    <span class="prog-icon"><i class="ph ph-lightning text-xl"></i></span>
+                                    <span class="text-left">
+                                        <span class="block font-bold text-white">Aqua-Power HIIT</span>
+                                        <span class="block text-xs text-gray-400">45 Menit · Energi Tinggi</span>
+                                    </span>
+                                </button>
+                                <button type="button" class="prog-btn" data-program="Hydro Therapy">
+                                    <span class="prog-icon"><i class="ph ph-bicycle text-xl"></i></span>
+                                    <span class="text-left">
+                                        <span class="block font-bold text-white">Hydro Therapy</span>
+                                        <span class="block text-xs text-gray-400">50 Menit · Fokus Tubuh Bawah</span>
+                                    </span>
+                                </button>
+                                <button type="button" class="prog-btn" data-program="Zen-Flow Yoga">
+                                    <span class="prog-icon"><i class="ph ph-drop text-xl"></i></span>
+                                    <span class="text-left">
+                                        <span class="block font-bold text-white">Zen-Flow Yoga</span>
+                                        <span class="block text-xs text-gray-400">60 Menit · Pikiran & Tubuh</span>
+                                    </span>
+                                </button>
+                                <button type="button" class="prog-btn" data-program="Pemulihan Cair">
+                                    <span class="prog-icon"><i class="ph ph-heartbeat text-xl"></i></span>
+                                    <span class="text-left">
+                                        <span class="block font-bold text-white">Pemulihan Cair</span>
+                                        <span class="block text-xs text-gray-400">40 Menit · Pemulihan & Perawatan</span>
+                                    </span>
+                                </button>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-1">Alamat Email</label>
-                                <input type="email" required
-                                    class="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 focus:ring-2 focus:ring-aqua-500 focus:border-aqua-500 outline-none transition-all text-white placeholder-gray-500">
+                        </div>
+
+                        <!-- Step 2: Date & Time -->
+                        <div id="step-datetime" class="hidden">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Calendar -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-3">
+                                        <button type="button" id="prev-month"
+                                            class="w-9 h-9 rounded-full bg-white/10 hover:bg-aqua-500 border border-white/20 flex items-center justify-center transition-colors">
+                                            <i class="ph ph-caret-left text-lg"></i>
+                                        </button>
+                                        <div id="cal-title" class="font-bold text-white"></div>
+                                        <button type="button" id="next-month"
+                                            class="w-9 h-9 rounded-full bg-white/10 hover:bg-aqua-500 border border-white/20 flex items-center justify-center transition-colors">
+                                            <i class="ph ph-caret-right text-lg"></i>
+                                        </button>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-1 text-center text-xs text-gray-400 font-medium mb-1">
+                                        <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span>
+                                    </div>
+                                    <div id="cal-days" class="grid grid-cols-7 gap-1"></div>
+                                </div>
+                                <!-- Slots -->
+                                <div>
+                                    <p id="slot-date-label" class="text-sm font-semibold text-gray-300 mb-3 min-h-[1.25rem]"></p>
+                                    <div id="slot-list" class="grid grid-cols-2 gap-2">
+                                        <p id="slot-empty"
+                                            class="text-gray-500 text-sm text-center py-10 col-span-2 flex flex-col items-center gap-2">
+                                            <i class="ph ph-calendar-blank text-3xl text-gray-600"></i>
+                                            Pilih tanggal untuk melihat slot tersedia
+                                        </p>
+                                    </div>
+                                    <p id="slot-error" class="text-red-400 text-sm text-center mt-3 hidden"></p>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-1">Program Pilihan</label>
-                                <select
-                                    class="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 focus:ring-2 focus:ring-aqua-500 focus:border-aqua-500 outline-none transition-all text-white [&>option]:text-gray-900">
-                                    <option>Aqua-Power HIIT</option>
-                                    <option>Hydro Therapy</option>
-                                    <option>Zen-Flow Yoga</option>
-                                    <option>Pemulihan Cair</option>
-                                    <option>Belum Yakin</option>
-                                </select>
+                            <div class="flex items-center justify-between mt-6">
+                                <button type="button" id="back-to-program"
+                                    class="px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-white/20 transition-colors">
+                                    Kembali
+                                </button>
+                                <button type="button" id="next-to-details" disabled
+                                    class="px-6 py-2.5 rounded-full bg-aqua-600 hover:bg-aqua-500 text-white text-sm font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                                    Lanjutkan <i class="ph ph-arrow-right ml-1"></i>
+                                </button>
                             </div>
-                            <button type="submit"
-                                class="w-full py-4 bg-aqua-600 hover:bg-aqua-500 text-white rounded-xl font-bold text-lg shadow-[0_0_15px_rgba(20,184,166,0.4)] transition-all transform hover:-translate-y-1 mt-4">
-                                Gabung Sekarang
+                        </div>
+
+                        <!-- Step 3: Details -->
+                        <div id="step-details" class="hidden">
+                            <div id="details-summary"
+                                class="flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 mb-6">
+                                <span class="w-12 h-12 rounded-xl bg-aqua-500/20 text-aqua-400 flex items-center justify-center shrink-0">
+                                    <i class="ph ph-calendar-check text-2xl"></i>
+                                </span>
+                                <div class="min-w-0">
+                                    <p id="summary-program" class="font-bold text-white truncate"></p>
+                                    <p id="summary-datetime" class="text-sm text-aqua-400"></p>
+                                </div>
+                            </div>
+                            <form id="booking-form" novalidate>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="field-name"
+                                            class="block text-sm font-medium text-gray-300 mb-1">Nama Lengkap</label>
+                                        <input type="text" id="field-name" required placeholder="Nama Anda"
+                                            class="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 focus:ring-2 focus:ring-aqua-500 focus:border-aqua-500 outline-none transition-all text-white placeholder-gray-500">
+                                    </div>
+                                    <div>
+                                        <label for="field-email"
+                                            class="block text-sm font-medium text-gray-300 mb-1">Alamat Email</label>
+                                        <input type="email" id="field-email" required placeholder="email@contoh.com"
+                                            class="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 focus:ring-2 focus:ring-aqua-500 focus:border-aqua-500 outline-none transition-all text-white placeholder-gray-500">
+                                    </div>
+                                    <div>
+                                        <label for="field-phone"
+                                            class="block text-sm font-medium text-gray-300 mb-1">No. WhatsApp</label>
+                                        <input type="tel" id="field-phone" required placeholder="+62 812-3456-7890"
+                                            class="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 focus:ring-2 focus:ring-aqua-500 focus:border-aqua-500 outline-none transition-all text-white placeholder-gray-500">
+                                    </div>
+                                    <p id="form-error" class="text-red-400 text-sm text-center hidden"></p>
+                                    <button type="submit"
+                                        class="w-full py-4 bg-aqua-600 hover:bg-aqua-500 text-white rounded-xl font-bold text-lg shadow-[0_0_15px_rgba(20,184,166,0.4)] transition-all transform hover:-translate-y-1">
+                                        Konfirmasi Booking <i class="ph ph-check-circle ml-1"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Success -->
+                        <div id="step-success" class="hidden text-center py-6">
+                            <div class="w-20 h-20 mx-auto rounded-full bg-aqua-500/20 border border-aqua-400/40 flex items-center justify-center mb-5 shadow-[0_0_30px_rgba(20,184,166,0.3)]">
+                                <i class="ph-fill ph-check text-4xl text-aqua-400"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-2">Booking Berhasil!</h4>
+                            <p class="text-gray-300 mb-2" id="success-program"></p>
+                            <p class="text-aqua-400 mb-6" id="success-datetime"></p>
+                            <button type="button" id="booking-again"
+                                class="px-6 py-3 rounded-full bg-white/10 border border-white/20 text-sm font-semibold hover:bg-aqua-500 transition-colors">
+                                Booking Lainnya
                             </button>
                         </div>
-                    </form>
+                    </div>
+
+                    <!-- Admin gear -->
+                    <button type="button" id="admin-gear" title="Panel Admin"
+                        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/15 text-gray-400 hover:text-aqua-400 flex items-center justify-center transition-colors">
+                        <i class="ph ph-gear-six text-lg"></i>
+                    </button>
                 </div>
             </div>
 
@@ -693,6 +1039,75 @@
             </div>
         </div>
     </footer>
+
+    <!-- Booking Admin Panel -->
+    <div class="admin-overlay" id="admin-overlay">
+        <div class="admin-modal">
+            <div
+                class="bg-deepblue-900/95 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.4)] text-white flex flex-col max-h-full">
+                <!-- Header -->
+                <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+                    <h3 class="text-xl font-bold flex items-center gap-2"><i class="ph ph-gear-six text-aqua-400"></i> Panel
+                        Admin Booking</h3>
+                    <button type="button" id="admin-close"
+                        class="w-9 h-9 rounded-full bg-white/10 hover:bg-red-500/20 border border-white/20 flex items-center justify-center transition-colors">
+                        <i class="ph ph-x text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Login screen -->
+                <div id="admin-login" class="p-6 flex-1 flex items-center justify-center">
+                    <div class="w-full max-w-sm text-center">
+                        <i class="ph ph-lock text-4xl text-aqua-400 mb-4"></i>
+                        <h4 class="text-lg font-bold mb-4">Masukkan Token Admin</h4>
+                        <input type="password" id="admin-token" placeholder="Token admin"
+                            class="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 focus:ring-2 focus:ring-aqua-500 focus:border-aqua-500 outline-none transition-all text-white placeholder-gray-500 mb-4">
+                        <p id="admin-login-error" class="text-red-400 text-sm mb-3 hidden"></p>
+                        <button type="button" id="admin-login-btn"
+                            class="w-full py-3 bg-aqua-600 hover:bg-aqua-500 text-white rounded-xl font-bold transition-colors">
+                            Masuk
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dashboard -->
+                <div id="admin-dash" class="hidden flex-1 min-h-0 flex flex-col">
+                    <!-- Holidays row -->
+                    <div class="px-6 py-4 border-b border-white/10 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                        <div class="flex items-center gap-2 shrink-0">
+                            <i class="ph ph-sun text-yellow-400"></i>
+                            <span class="text-sm font-bold">Tanggal Libur</span>
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <input type="date" id="holiday-date" class="holiday-date-input">
+                            <button type="button" id="holiday-add"
+                                class="px-3 py-2 rounded-xl bg-white/10 hover:bg-aqua-500 border border-white/20 text-xs font-semibold transition-colors">
+                                <i class="ph ph-plus"></i> Tambah
+                            </button>
+                        </div>
+                        <div id="holiday-chips" class="flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <!-- Bookings table -->
+                    <div class="admin-table-wrap flex-1 min-h-0">
+                        <table class="admin-table w-full text-sm">
+                            <thead>
+                                <tr class="text-left text-gray-400 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-3">Tanggal</th>
+                                    <th class="px-6 py-3">Jam</th>
+                                    <th class="px-6 py-3">Nama</th>
+                                    <th class="px-6 py-3">Program</th>
+                                    <th class="px-6 py-3 text-right">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-tbody" class="divide-y divide-white/5"></tbody>
+                        </table>
+                        <p id="admin-empty" class="text-gray-500 text-sm text-center py-10">Belum ada booking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/628129111502" target="_blank" rel="noopener noreferrer" id="whatsapp-float"
@@ -756,6 +1171,535 @@
                 navbar.classList.remove('shadow-md');
             }
         });
+    </script>
+
+    <!-- Booking Widget Script (Cloudflare Worker API + localStorage fallback) -->
+    <script>
+        // ================================================================
+        // Konfigurasi
+        // Ganti API_BASE dengan URL Worker Cloudflare setelah deploy,
+        // mis. 'https://tirta-afiat-booking.your-subdomain.workers.dev'.
+        // Jika dikosongkan atau gagal terhubung, data disimpan di localStorage.
+        // ================================================================
+        const API_BASE = '';
+
+        const PROGRAMS = ['Aqua-Power HIIT', 'Hydro Therapy', 'Zen-Flow Yoga', 'Pemulihan Cair'];
+        const TIME_SLOTS = ['07:00', '08:00', '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+        const DAY_NAMES = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+        const MONTH_NAMES = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus',
+            'September', 'Oktober', 'November', 'Desember'
+        ];
+
+        // ---------------- API client (Cloudflare Worker) ----------------
+        async function apiRequest(path, options = {}) {
+            if (!API_BASE) throw new Error('offline');
+            const res = await fetch(API_BASE + path, options);
+            if (!res.ok) {
+                let msg = 'Terjadi kesalahan';
+                try {
+                    const data = await res.json();
+                    msg = data.error || msg;
+                } catch (e) {}
+                const err = new Error(msg);
+                err.status = res.status;
+                throw err;
+            }
+            return res.json();
+        }
+
+        // ---------------- localStorage fallback ----------------
+        const LS_BOOKINGS = 'tirta_bookings';
+        const LS_HOLIDAYS = 'tirta_holidays';
+        const LS_TOKEN = 'tirta_admin_token';
+        const ADMIN_TOKEN = 'admin123'; // sama dengan env ADMIN_TOKEN di wrangler.toml
+
+        const lsGet = (k, d = []) => {
+            try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; }
+        };
+        const lsSet = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+        const localApi = {
+            async availability(month, date) {
+                const holidays = lsGet(LS_HOLIDAYS);
+                const bookings = lsGet(LS_BOOKINGS);
+                if (month) {
+                    return {
+                        month,
+                        holidays: holidays.filter(h => h.startsWith(month)),
+                        booked: bookings.filter(b => b.date.startsWith(month)).map(b => ({ date: b.date, time: b.time }))
+                    };
+                }
+                if (date) {
+                    return {
+                        date,
+                        isHoliday: holidays.includes(date),
+                        bookedTimes: bookings.filter(b => b.date === date).map(b => b.time)
+                    };
+                }
+                return { month: '', holidays: [], booked: [] };
+            },
+            async createBooking(payload) {
+                const bookings = lsGet(LS_BOOKINGS);
+                const today = new Date().toISOString().slice(0, 10);
+                if (payload.date < today) throw new Error('Tidak bisa booking di masa lalu');
+                if (lsGet(LS_HOLIDAYS).includes(payload.date)) throw new Error('Tanggal tersebut libur');
+                if (bookings.some(b => b.date === payload.date && b.time === payload.time)) {
+                    throw new Error('Slot waktu sudah dibooking');
+                }
+                const rec = Object.assign({ id: Date.now(), created_at: new Date().toISOString() }, payload);
+                bookings.push(rec);
+                lsSet(LS_BOOKINGS, bookings);
+                return { ok: true, id: rec.id };
+            },
+            async listBookings() {
+                return lsGet(LS_BOOKINGS).sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+            },
+            async cancelBooking(id) {
+                lsSet(LS_BOOKINGS, lsGet(LS_BOOKINGS).filter(b => b.id !== Number(id)));
+                return { ok: true };
+            },
+            async listHolidays() {
+                return lsGet(LS_HOLIDAYS).sort();
+            },
+            async addHoliday(date) {
+                const h = lsGet(LS_HOLIDAYS);
+                if (!h.includes(date)) h.push(date);
+                lsSet(LS_HOLIDAYS, h);
+                return { ok: true };
+            },
+            async removeHoliday(date) {
+                lsSet(LS_HOLIDAYS, lsGet(LS_HOLIDAYS).filter(d => d !== date));
+                return { ok: true };
+            }
+        };
+
+        async function getAvailability(month, date) {
+            try {
+                return await apiRequest(`/api/availability?month=${month}`);
+            } catch (e) {
+                return localApi.availability(month, null);
+            }
+        }
+
+        async function getAvailabilityForDate(date) {
+            try {
+                return await apiRequest(`/api/availability?date=${date}`);
+            } catch (e) {
+                return localApi.availability(null, date);
+            }
+        }
+
+        // ---------------- State ----------------
+        const state = {
+            program: null,
+            year: new Date().getFullYear(),
+            month: new Date().getMonth(),
+            selectedDate: null,
+            selectedTime: null,
+            holidayDates: new Set(),
+            bookedTimes: {},
+            apiOnline: false
+        };
+
+        // ---------------- Element helpers ----------------
+        const $ = (id) => document.getElementById(id);
+
+        function pad(n) { return String(n).padStart(2, '0'); }
+        function isoDate(y, m, d) { return `${y}-${pad(m + 1)}-${pad(d)}`; }
+        function fmtDate(iso) {
+            const [y, m, d] = iso.split('-').map(Number);
+            const date = new Date(y, m - 1, d);
+            return `${DAY_NAMES[date.getDay()]}, ${d} ${MONTH_NAMES[m - 1]} ${y}`;
+        }
+
+        // ---------------- Step navigation ----------------
+        const steps = { program: 1, datetime: 2, details: 3 };
+
+        function setStep(step) {
+            document.querySelectorAll('[id^="step-"]').forEach(el => el.classList.add('hidden'));
+            $('step-' + step).classList.remove('hidden');
+            const n = steps[step];
+            for (let i = 1; i <= 3; i++) {
+                const dot = $('step-dot-' + i);
+                dot.className = 'step-dot';
+                if (i < n) dot.classList.add('done');
+                if (i === n) dot.classList.add('active');
+            }
+            $('step-line-1').classList.toggle('done', n > 2);
+            $('step-line-2').classList.toggle('done', n > 3);
+        }
+
+        // ---------------- Program selection ----------------
+        document.querySelectorAll('.prog-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.prog-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                state.program = btn.dataset.program;
+                setStep('datetime');
+                renderCalendar();
+            });
+        });
+
+        // ---------------- Calendar ----------------
+        function renderCalendar() {
+            $('cal-title').textContent = `${MONTH_NAMES[state.month]} ${state.year}`;
+            const firstDay = new Date(state.year, state.month, 1).getDay();
+            const daysInMonth = new Date(state.year, state.month + 1, 0).getDate();
+            const todayISO = new Date().toISOString().slice(0, 10);
+            const grid = $('cal-days');
+
+            let html = '';
+            for (let i = 0; i < firstDay; i++) html += '<span></span>';
+            for (let d = 1; d <= daysInMonth; d++) {
+                const iso = isoDate(state.year, state.month, d);
+                const cls = ['cal-day'];
+                if (iso < todayISO || state.holidayDates.has(iso)) cls.push('cal-disabled');
+                if (iso === todayISO) cls.push('cal-today');
+                if (iso === state.selectedDate) cls.push('cal-selected');
+                html += `<button type="button" class="${cls.join(' ')}" data-date="${iso}">${d}</button>`;
+            }
+            grid.innerHTML = html;
+
+            grid.querySelectorAll('.cal-day').forEach(btn => {
+                btn.addEventListener('click', () => selectDate(btn.dataset.date));
+            });
+        }
+
+        async function selectDate(date) {
+            state.selectedDate = date;
+            state.selectedTime = null;
+            $('next-to-details').disabled = true;
+            $('slot-empty').classList.remove('hidden');
+            $('slot-empty').innerHTML =
+                '<i class="ph ph-clock text-3xl text-gray-600"></i> Memuat slot tersedia...';
+            $('slot-error').classList.add('hidden');
+            $('slot-date-label').textContent = fmtDate(date);
+            renderCalendar();
+
+            try {
+                const data = await getAvailabilityForDate(date);
+                state.bookedTimes[date] = data.bookedTimes || [];
+            } catch (e) {
+                state.bookedTimes[date] = [];
+            }
+
+            const booked = state.bookedTimes[date] || [];
+            const today = new Date().toISOString().slice(0, 10);
+            const nowHrs = new Date().getHours();
+            const nowMin = new Date().getMinutes();
+            const isToday = date === today;
+
+            $('slot-empty').classList.add('hidden');
+            $('slot-list').innerHTML = TIME_SLOTS.map(t => {
+                const [h, m] = t.split(':').map(Number);
+                const past = isToday && (h < nowHrs || (h === nowHrs && m <= nowMin));
+                const taken = booked.includes(t);
+                const disabled = past || taken;
+                const cls = ['slot-btn'];
+                if (t === state.selectedTime) cls.push('slot-selected');
+                return `<button type="button" class="${cls.join(' ')}" data-time="${t}" ${disabled ? 'disabled' : ''}>${t}</button>`;
+            }).join('');
+
+            if (!$('slot-list').querySelector('.slot-btn:not(:disabled)')) {
+                $('slot-empty').classList.remove('hidden');
+                $('slot-empty').innerHTML =
+                    '<i class="ph ph-calendar-x text-3xl text-gray-600"></i> Tidak ada slot tersedia pada tanggal ini';
+            }
+
+            $('slot-list').querySelectorAll('.slot-btn:not(:disabled)').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('slot-selected'));
+                    btn.classList.add('slot-selected');
+                    state.selectedTime = btn.dataset.time;
+                    $('next-to-details').disabled = false;
+                });
+            });
+        }
+
+        $('prev-month').addEventListener('click', async () => {
+            if (state.month === 0) { state.month = 11; state.year--; } else { state.month--; }
+            state.selectedDate = null;
+            $('next-to-details').disabled = true;
+            $('slot-date-label').textContent = '';
+            $('slot-list').innerHTML = '';
+            $('slot-empty').classList.remove('hidden');
+            $('slot-empty').innerHTML =
+                '<i class="ph ph-calendar-blank text-3xl text-gray-600"></i> Pilih tanggal untuk melihat slot tersedia';
+            await loadMonthData();
+            renderCalendar();
+        });
+
+        $('next-month').addEventListener('click', async () => {
+            if (state.month === 11) { state.month = 0; state.year++; } else { state.month++; }
+            state.selectedDate = null;
+            $('next-to-details').disabled = true;
+            $('slot-date-label').textContent = '';
+            $('slot-list').innerHTML = '';
+            $('slot-empty').classList.remove('hidden');
+            $('slot-empty').innerHTML =
+                '<i class="ph ph-calendar-blank text-3xl text-gray-600"></i> Pilih tanggal untuk melihat slot tersedia';
+            await loadMonthData();
+            renderCalendar();
+        });
+
+        $('back-to-program').addEventListener('click', () => setStep('program'));
+
+        $('next-to-details').addEventListener('click', () => {
+            if (!state.program || !state.selectedDate || !state.selectedTime) return;
+            $('summary-program').textContent = state.program;
+            $('summary-datetime').textContent = `${fmtDate(state.selectedDate)} · ${state.selectedTime}`;
+            setStep('details');
+        });
+
+        // ---------------- Booking submit ----------------
+        $('booking-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = $('field-name').value.trim();
+            const email = $('field-email').value.trim();
+            const phone = $('field-phone').value.trim();
+            const errEl = $('form-error');
+            errEl.classList.add('hidden');
+
+            if (!name || !email || !phone) {
+                errEl.textContent = 'Mohon lengkapi semua data';
+                errEl.classList.remove('hidden');
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errEl.textContent = 'Format email tidak valid';
+                errEl.classList.remove('hidden');
+                return;
+            }
+
+            const payload = {
+                name,
+                email,
+                phone,
+                program: state.program,
+                date: state.selectedDate,
+                time: state.selectedTime
+            };
+
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="ph ph-circle-notch ph-spin"></i> Memproses...';
+
+            try {
+                try {
+                    await apiRequest('/api/bookings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (err) {
+                    if (err.status && err.status !== 500) throw err;
+                    await localApi.createBooking(payload);
+                }
+                $('success-program').textContent = state.program;
+                $('success-datetime').textContent = `${fmtDate(state.selectedDate)} · ${state.selectedTime}`;
+                setStep('success');
+                if (state.bookedTimes[state.selectedDate]) {
+                    state.bookedTimes[state.selectedDate].push(state.selectedTime);
+                }
+            } catch (err) {
+                errEl.textContent = err.message || 'Terjadi kesalahan, coba lagi.';
+                errEl.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Konfirmasi Booking <i class="ph ph-check-circle ml-1"></i>';
+            }
+        });
+
+        $('booking-again').addEventListener('click', () => {
+            state.program = null;
+            state.selectedDate = null;
+            state.selectedTime = null;
+            $('booking-form').reset();
+            document.querySelectorAll('.prog-btn').forEach(b => b.classList.remove('selected'));
+            setStep('program');
+        });
+
+        // ---------------- Admin panel ----------------
+        function openAdmin() {
+            $('admin-overlay').classList.add('open');
+            if (localStorage.getItem(LS_TOKEN)) {
+                showAdminDash();
+            } else {
+                $('admin-login').classList.remove('hidden');
+                $('admin-dash').classList.add('hidden');
+            }
+        }
+
+        function closeAdmin() {
+            $('admin-overlay').classList.remove('open');
+        }
+
+        $('admin-gear').addEventListener('click', openAdmin);
+        $('admin-close').addEventListener('click', closeAdmin);
+        $('admin-overlay').addEventListener('click', (e) => {
+            if (e.target === $('admin-overlay')) closeAdmin();
+        });
+
+        $('admin-login-btn').addEventListener('click', async () => {
+            const token = $('admin-token').value.trim();
+            const errEl = $('admin-login-error');
+            errEl.classList.add('hidden');
+            if (!token) {
+                errEl.textContent = 'Token tidak boleh kosong';
+                errEl.classList.remove('hidden');
+                return;
+            }
+            // Saat terhubung ke Worker, validasi dilakukan di server (401 = token salah).
+            // Saat offline (localStorage), validasi terhadap ADMIN_TOKEN lokal.
+            const useLocal = !API_BASE;
+            let valid = false;
+            if (!useLocal) {
+                try {
+                    await apiRequest('/api/bookings', {
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    });
+                    valid = true;
+                } catch (e) {
+                    valid = false;
+                }
+            } else {
+                valid = token === ADMIN_TOKEN;
+            }
+            if (valid) {
+                localStorage.setItem(LS_TOKEN, token);
+                showAdminDash();
+            } else {
+                errEl.textContent = 'Token salah.';
+                errEl.classList.remove('hidden');
+            }
+        });
+
+        async function showAdminDash() {
+            $('admin-login').classList.add('hidden');
+            $('admin-dash').classList.remove('hidden');
+            await Promise.all([renderAdminBookings(), renderHolidayChips()]);
+        }
+
+        async function adminFetch(path, options = {}) {
+            const token = localStorage.getItem(LS_TOKEN) || '';
+            try {
+                return await apiRequest(path, {
+                    ...options,
+                    headers: { 'Authorization': 'Bearer ' + token, ...(options.headers || {}) }
+                });
+            } catch (e) {
+                if (e.status && e.status !== 401) throw e;
+                return { offline: true };
+            }
+        }
+
+        async function renderAdminBookings() {
+            const tbody = $('admin-tbody');
+            let rows = [];
+            try {
+                const data = await adminFetch('/api/bookings');
+                rows = data.offline ? await localApi.listBookings() : (data.bookings || []);
+            } catch (e) {
+                rows = await localApi.listBookings();
+            }
+
+            $('admin-empty').style.display = rows.length ? 'none' : 'block';
+            tbody.innerHTML = rows.map(b => `
+                <tr class="hover:bg-white/5">
+                    <td class="px-6 py-3 whitespace-nowrap">${b.date}</td>
+                    <td class="px-6 py-3 text-aqua-400 font-semibold">${b.time}</td>
+                    <td class="px-6 py-3">${b.name}<span class="block text-xs text-gray-500">${b.email}</span></td>
+                    <td class="px-6 py-3 text-gray-400">${b.program}</td>
+                    <td class="px-6 py-3 text-right">
+                        <button class="admin-row-cancel" data-id="${b.id}" title="Batalkan booking">
+                            <i class="ph ph-x-circle text-xl"></i>
+                        </button>
+                    </td>
+                </tr>`).join('');
+
+            tbody.querySelectorAll('.admin-row-cancel').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const id = btn.dataset.id;
+                    try {
+                        const data = await adminFetch('/api/bookings?id=' + id, { method: 'DELETE' });
+                        if (data.offline) await localApi.cancelBooking(id);
+                    } catch (e) {
+                        await localApi.cancelBooking(id);
+                    }
+                    renderAdminBookings();
+                });
+            });
+        }
+
+        async function renderHolidayChips() {
+            const wrap = $('holiday-chips');
+            let holidays = [];
+            try {
+                const data = await adminFetch('/api/holidays');
+                holidays = data.offline ? await localApi.listHolidays() : (data.holidays || []);
+            } catch (e) {
+                holidays = await localApi.listHolidays();
+            }
+
+            wrap.innerHTML = holidays.map(h => `
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-yellow-500/15 border border-yellow-500/30 text-yellow-300 text-xs font-medium">
+                    ${h}
+                    <button type="button" class="holiday-remove hover:text-white transition-colors" data-date="${h}">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </span>`).join('');
+
+            wrap.querySelectorAll('.holiday-remove').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const date = btn.dataset.date;
+                    try {
+                        const data = await adminFetch('/api/holidays?date=' + date, { method: 'DELETE' });
+                        if (data.offline) await localApi.removeHoliday(date);
+                    } catch (e) {
+                        await localApi.removeHoliday(date);
+                    }
+                    renderHolidayChips();
+                });
+            });
+        }
+
+        $('holiday-add').addEventListener('click', async () => {
+            const date = $('holiday-date').value;
+            if (!date) return;
+            try {
+                const data = await adminFetch('/api/holidays', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ date })
+                });
+                if (data.offline) await localApi.addHoliday(date);
+            } catch (e) {
+                await localApi.addHoliday(date);
+            }
+            $('holiday-date').value = '';
+            renderHolidayChips();
+        });
+
+        // ---------------- Init ----------------
+        async function loadMonthData() {
+            const key = `${state.year}-${pad(state.month + 1)}`;
+            try {
+                const data = await getAvailability(key);
+                state.holidayDates = new Set(data.holidays || []);
+                (data.booked || []).forEach(b => {
+                    if (!state.bookedTimes[b.date]) state.bookedTimes[b.date] = [];
+                    state.bookedTimes[b.date].push(b.time);
+                });
+            } catch (e) {
+                state.holidayDates = new Set(await localApi.availability(key, null).then(d => d.holidays));
+            }
+        }
+
+        (async function init() {
+            setStep('program');
+            await loadMonthData();
+            renderCalendar();
+        })();
     </script>
 </body>
 

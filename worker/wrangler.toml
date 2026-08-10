@@ -1,0 +1,12 @@
+name = "tirta-afiat-booking"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tirta-afiat"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+# Wajib diganti. Token ini dipakai frontend (lihat ADMIN_TOKEN di index.html).
+ADMIN_TOKEN = "admin123"
