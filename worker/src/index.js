@@ -9,7 +9,7 @@ const CORS_HEADERS = {
   'Access-Control-Max-Age': '86400',
 };
 
-const PROGRAMS = ['Aqua-Power HIIT', 'Hydro Therapy', 'Zen-Flow Yoga', 'Pemulihan Cair'];
+const PROGRAMS = ['Les Renang', 'Hydro Therapy', 'Zen-Flow Yoga', 'Pemulihan Cair'];
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {

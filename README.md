@@ -85,5 +85,5 @@ Contoh booking:
 ```bash
 curl -X POST https://<worker-url>/api/bookings \
   -H "Content-Type: application/json" \
-  -d '{"name":"Elena","email":"elena@mail.com","phone":"+62 812-0000","program":"Aqua-Power HIIT","date":"2026-08-15","time":"09:00"}'
+  -d '{"name":"Elena","email":"elena@mail.com","phone":"+62 812-0000","program":"Les Renang","date":"2026-08-15","time":"09:00"}'
 ```
