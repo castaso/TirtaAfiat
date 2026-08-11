@@ -304,10 +304,17 @@
             font-family: inherit;
         }
 
-        .prog-btn:hover {
+        .prog-btn:hover:not(:disabled) {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(20, 184, 166, 0.5);
             transform: translateY(-1px);
+        }
+
+        .prog-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+            border-color: rgba(255, 255, 255, 0.05);
         }
 
         .prog-btn.selected {
@@ -950,17 +957,21 @@
                                         <span class="block text-xs text-gray-400">50 Menit · Fokus Tubuh Bawah</span>
                                     </span>
                                 </button>
-                                <button type="button" class="prog-btn" data-program="Zen-Flow Yoga">
+                                <button type="button" class="prog-btn" data-program="Zen-Flow Yoga" disabled>
                                     <span class="prog-icon"><i class="ph ph-drop text-xl"></i></span>
                                     <span class="text-left">
-                                        <span class="block font-bold text-white">Zen-Flow Yoga</span>
+                                        <span class="block font-bold text-white">Zen-Flow Yoga <span
+                                                class="text-xs text-red-400 font-normal ml-1">(Tidak
+                                                Tersedia)</span></span>
                                         <span class="block text-xs text-gray-400">60 Menit · Pikiran & Tubuh</span>
                                     </span>
                                 </button>
-                                <button type="button" class="prog-btn" data-program="Pemulihan Cair">
+                                <button type="button" class="prog-btn" data-program="Pemulihan Cair" disabled>
                                     <span class="prog-icon"><i class="ph ph-heartbeat text-xl"></i></span>
                                     <span class="text-left">
-                                        <span class="block font-bold text-white">Pemulihan Cair</span>
+                                        <span class="block font-bold text-white">Pemulihan Cair <span
+                                                class="text-xs text-red-400 font-normal ml-1">(Tidak
+                                                Tersedia)</span></span>
                                         <span class="block text-xs text-gray-400">40 Menit · Pemulihan &
                                             Perawatan</span>
                                     </span>
@@ -1393,6 +1404,7 @@
         // ---------------- Program selection ----------------
         document.querySelectorAll('.prog-btn').forEach(btn => {
             btn.addEventListener('click', () => {
+                if (btn.disabled) return;
                 document.querySelectorAll('.prog-btn').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
                 state.program = btn.dataset.program;
