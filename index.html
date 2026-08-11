@@ -67,6 +67,26 @@
     </script>
 
     <style>
+        /* Highlight / Text selection styling */
+        ::selection {
+            background-color: rgba(239, 68, 68, 0.25);
+            color: #ef4444;
+        }
+
+        ::-moz-selection {
+            background-color: rgba(239, 68, 68, 0.25);
+            color: #ef4444;
+        }
+
+        mark {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .text-red {
+            color: #ef4444 !important;
+        }
+
         /* Custom Scrollbar for the horizontal scroll section */
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
@@ -740,9 +760,9 @@
                             </li>
                             <li
                                 class="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-default border border-transparent hover:border-aqua-500/50 backdrop-blur-md">
-                                <div class="font-bold text-red"><s>15:45</s></div>
-                                <div class="text-aqua-400 text-red font-medium"><s>Pemulihan Cair</s></div>
-                                <div class="text-xs text-red-400 mt-1"><s>Senin</s></div>
+                                <div class="font-bold text-red-400 text-red"><s>15:45</s></div>
+                                <div class="text-red-400 text-red font-medium"><s>Pemulihan Cair</s></div>
+                                <div class="text-xs text-red-400 text-red mt-1"><s>Senin</s></div>
                             </li>
                         </ul>
                     </div>
@@ -759,15 +779,15 @@
                         <ul class="space-y-4">
                             <li
                                 class="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-default border border-transparent hover:border-aqua-500/50 backdrop-blur-md">
-                                <div class="font-bold text-red"><s>08:15</s></div>
-                                <div class="text-aqua-400 text-red font-medium"><s>Hydro Therapy</s></div>
-                                <div class="text-xs text-red-400 mt-1"><s>Selasa</s></div>
+                                <div class="font-bold text-red-400 text-red"><s>08:15</s></div>
+                                <div class="text-red-400 text-red font-medium"><s>Hydro Therapy</s></div>
+                                <div class="text-xs text-red-400 text-red mt-1"><s>Selasa</s></div>
                             </li>
                             <li
                                 class="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-default border border-transparent hover:border-aqua-500/50 backdrop-blur-md">
-                                <div class="font-bold text-red"><s>15:45</s></div>
-                                <div class="text-aqua-400 text-red font-medium"><s>Zen-Flow Yoga</s></div>
-                                <div class="text-xs text-red-400 mt-1"><s>Selasa</s></div>
+                                <div class="font-bold text-red-400 text-red"><s>15:45</s></div>
+                                <div class="text-red-400 text-red font-medium"><s>Zen-Flow Yoga</s></div>
+                                <div class="text-xs text-red-400 text-red mt-1"><s>Selasa</s></div>
                             </li>
                         </ul>
                     </div>
@@ -812,15 +832,15 @@
                         <ul class="space-y-4">
                             <li
                                 class="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-default border border-transparent hover:border-aqua-500/50 backdrop-blur-md">
-                                <div class="font-bold text-red"><s>08:15</s></div>
-                                <div class="text-aqua-400 text-red font-medium"><s>Pemulihan Cair</s></div>
-                                <div class="text-xs text-red-400 mt-1"><s>Kamis</s></div>
+                                <div class="font-bold text-red-400 text-red"><s>08:15</s></div>
+                                <div class="text-red-400 text-red font-medium"><s>Pemulihan Cair</s></div>
+                                <div class="text-xs text-red-400 text-red mt-1"><s>Kamis</s></div>
                             </li>
                             <li
                                 class="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-default border border-transparent hover:border-aqua-500/50 backdrop-blur-md">
-                                <div class="font-bold text-red"><s>15:45</s></div>
-                                <div class="text-aqua-400 text-red font-medium"><s>Zen-Flow Yoga</s></div>
-                                <div class="text-xs text-red-400 mt-1"><s>Kamis</s></div>
+                                <div class="font-bold text-red-400 text-red"><s>15:45</s></div>
+                                <div class="text-red-400 text-red font-medium"><s>Zen-Flow Yoga</s></div>
+                                <div class="text-xs text-red-400 text-red mt-1"><s>Kamis</s></div>
                             </li>
                         </ul>
                     </div>
