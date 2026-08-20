@@ -1,0 +1,4 @@
+node_modules/
+worker/.wrangler/
+.env
+.env.*
