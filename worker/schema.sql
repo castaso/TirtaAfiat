@@ -1,22 +1,17 @@
--- Skema database D1 untuk Tirta Afiat booking
--- Jalankan: wrangler d1 execute tirta-afiat --local --file=./schema.sql
-
-DROP TABLE IF EXISTS bookings;
-DROP TABLE IF EXISTS holidays;
-
-CREATE TABLE bookings (
+CREATE TABLE IF NOT EXISTS bookings (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   email TEXT NOT NULL,
-  phone TEXT,
+  phone TEXT NOT NULL,
   program TEXT NOT NULL,
-  date TEXT NOT NULL,            -- format YYYY-MM-DD
-  time TEXT NOT NULL,            -- format HH:MM
-  created_at TEXT DEFAULT (datetime('now'))
+  date TEXT NOT NULL,
+  time TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
-CREATE INDEX idx_bookings_date ON bookings(date);
-
-CREATE TABLE holidays (
-  date TEXT PRIMARY KEY          -- format YYYY-MM-DD
+CREATE TABLE IF NOT EXISTS holidays (
+  date TEXT PRIMARY KEY
 );
+
+CREATE INDEX IF NOT EXISTS idx_bookings_date ON bookings(date);
+CREATE INDEX IF NOT EXISTS idx_bookings_date_time ON bookings(date, time);

@@ -1253,7 +1253,17 @@
         // mis. 'https://tirta-afiat-booking.your-subdomain.workers.dev'.
         // Jika dikosongkan atau gagal terhubung, data disimpan di localStorage.
         // ================================================================
-        const API_BASE = '';
+        const API_BASE = 'https://tirta-afiat-booking.castasoft.workers.dev';
+
+
+        // ================================================================
+        // Telegram Notification Configuration
+        // Set your Telegram Bot Token and Chat ID here.
+        // Get a bot token from @BotFather on Telegram.
+        // Get your chat ID by messaging @userinfobot on Telegram.
+        // ================================================================
+        const TELEGRAM_BOT_TOKEN = '8958293091:AAHVqmsc-B-dEGXkKlv1rAviysZJGJzSjMI'; // e.g. '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
+        const TELEGRAM_CHAT_ID = '5905665988';   // e.g. '987654321' or '-1001234567890' for groups
 
         const PROGRAMS = ['Les Renang', 'Hydro Therapy', 'Zen-Flow Yoga', 'Pemulihan Cair'];
         const TIME_SLOTS = ['08:15', '15:45'];
@@ -1344,6 +1354,49 @@
                 return { ok: true };
             }
         };
+
+        // ---------------- Telegram Notification ----------------
+        async function sendTelegramNotification(booking) {
+            if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
+
+            const dayNames = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+            const monthNames = [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+            const [y, m, d] = booking.date.split('-').map(Number);
+            const dateObj = new Date(y, m - 1, d);
+            const dayName = dayNames[dateObj.getDay()];
+            const monthName = monthNames[m - 1];
+            const formattedDate = dayName + ', ' + d + ' ' + monthName + ' ' + y;
+
+            const message =
+                '\u{1F3C7} *Booking Baru \u2014 Tirta Afiat* \u{1F3C7}\n\n' +
+                '\u{1F464} *Nama:* ' + booking.name + '\n' +
+                '\u{2709}\uFE0F *Email:* ' + booking.email + '\n' +
+                '\u{1F4F1} *Telepon:* ' + booking.phone + '\n' +
+                '\u{1F3AF} *Program:* ' + booking.program + '\n' +
+                '\u{1F4C5} *Tanggal:* ' + formattedDate + '\n' +
+                '\u23F0 *Jam:* ' + booking.time + '\n\n' +
+                '_Dikonfirmasi otomatis via website._';
+
+            try {
+                await fetch(
+                    'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage',
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: TELEGRAM_CHAT_ID,
+                            text: message,
+                            parse_mode: 'Markdown'
+                        })
+                    }
+                );
+            } catch (err) {
+                console.error('Telegram notification failed:', err);
+            }
+        }
 
         async function getAvailability(month, date) {
             try {
@@ -1568,6 +1621,9 @@
                     if (err.status && err.status !== 500) throw err;
                     await localApi.createBooking(payload);
                 }
+                // Send Telegram notification after successful booking
+                await sendTelegramNotification(payload);
+
                 $('success-program').textContent = state.program;
                 $('success-datetime').textContent = `${fmtDate(state.selectedDate)} · ${state.selectedTime}`;
                 setStep('success');
